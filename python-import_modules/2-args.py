@@ -7,7 +7,7 @@ if __name__ == "__main__":
     if counter == 0:
         print("0 argument.")
     elif counter == 1:
-        print("1 argumnent:")
+        print("1 argument:")
     else:
         print(f"{counter} arguments:")
 
