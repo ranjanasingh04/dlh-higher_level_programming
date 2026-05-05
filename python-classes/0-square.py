@@ -1,8 +1,10 @@
 #!/usr/bin/python3
-""" This module defines an empty square file"""
+"""
+Module that defines an empty Square class.
+"""
 
 class Square:
-    """ This is an empty Square class"""
-    def __init__(self):
-        """Initialize instances of Class"""
+    """
+    Empty Square class.
+    """
     pass
