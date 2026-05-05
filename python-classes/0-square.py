@@ -3,4 +3,6 @@
 
 class Square:
     """ This is an empty Square class"""
+    def __init__(self):
+        """Initialize instances of Class"""
     pass
