@@ -1,41 +1,49 @@
 #!/usr/bin/python3
+"""Module that defines a singly linked list."""
+
 
 class Node:
-    """ Single linkes List Module class"""
+    """Defines a node of a singly linked list."""
 
-    def __init__(self, data,  next_node=None):
+    def __init__(self, data, next_node=None):
+        """Initialize a node."""
         self.data = data
         self.next_node = next_node
 
     @property
     def data(self):
+        """Retrieve data."""
         return self.__data
 
     @data.setter
     def data(self, value):
+        """Set data."""
         if not isinstance(value, int):
             raise TypeError("data must be an integer")
-
         self.__data = value
 
     @property
     def next_node(self):
+        """Retrieve next node."""
         return self.__next_node
 
     @next_node.setter
     def next_node(self, value):
-        if value is not None and type(value) is not Node:
+        """Set next node."""
+        if value is not None and not isinstance(value, Node):
             raise TypeError("next_node must be a Node object")
         self.__next_node = value
 
 
 class SinglyLinkedList:
-    """ Define single linked list"""
+    """Defines a singly linked list."""
 
     def __init__(self):
+        """Initialize the list."""
         self.__head = None
 
     def __str__(self):
+        """Return printable string representation of the list."""
         values = []
         current = self.__head
 
@@ -46,6 +54,7 @@ class SinglyLinkedList:
         return "\n".join(values)
 
     def sorted_insert(self, value):
+        """Insert a new node in sorted order."""
         new_node = Node(value)
 
         if self.__head is None or value < self.__head.data:
