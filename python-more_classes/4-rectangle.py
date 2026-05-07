@@ -56,7 +56,7 @@ class Rectangle:
         for i in range(self.__height):
             rows.append("#" * self.__width)
 
-        return "\n".join(rows)    
+        return "\n".join(rows)
 
     def __repr__(self):
         """Return string representation to recreate object"""
