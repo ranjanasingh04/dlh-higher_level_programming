@@ -57,7 +57,3 @@ class Rectangle:
             rows.append("#" * self.__width)
 
         return "\n".join(rows)
-
-
-
-
