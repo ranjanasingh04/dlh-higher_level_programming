@@ -28,7 +28,7 @@ class Square:
     def area(self):
         """Return the area of the square."""
         return self.__size ** 2
-    
+
     def __eq__(self, other):
         return self.area() == other.area()
 
@@ -46,4 +46,3 @@ class Square:
 
     def __ge__(self, other):
         return self.area() >= other.area()
-
