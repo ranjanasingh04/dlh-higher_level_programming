@@ -4,21 +4,7 @@
 import sys
 
 
-total_size = 0
-line_count = 0
-status_codes = {
-    "200": 0,
-    "301": 0,
-    "400": 0,
-    "401": 0,
-    "403": 0,
-    "404": 0,
-    "405": 0,
-    "500": 0
-}
-
-
-def print_stats():
+def print_stats(total_size, status_codes):
     """Print accumulated metrics"""
     print("File size: {}".format(total_size))
 
@@ -27,28 +13,40 @@ def print_stats():
             print("{}: {}".format(code, status_codes[code]))
 
 
-try:
-    for line in sys.stdin:
-        line_count += 1
+if __name__ == "__main__":
+    total_size = 0
+    line_count = 0
+    status_codes = {
+        "200": 0,
+        "301": 0,
+        "400": 0,
+        "401": 0,
+        "403": 0,
+        "404": 0,
+        "405": 0,
+        "500": 0
+    }
 
-        parts = line.split()
+    try:
+        for line in sys.stdin:
+            line_count += 1
+            parts = line.split()
 
-        try:
-            file_size = int(parts[-1])
-            total_size += file_size
-        except (IndexError, ValueError):
-            pass
+            try:
+                total_size += int(parts[-1])
+            except (IndexError, ValueError):
+                pass
 
-        try:
-            status_code = parts[-2]
-            if status_code in status_codes:
-                status_codes[status_code] += 1
-        except IndexError:
-            pass
+            try:
+                status_code = parts[-2]
+                if status_code in status_codes:
+                    status_codes[status_code] += 1
+            except IndexError:
+                pass
 
-        if line_count % 10 == 0:
-            print_stats()
+            if line_count % 10 == 0:
+                print_stats(total_size, status_codes)
 
-except KeyboardInterrupt:
-    print_stats()
-    raise
+    except KeyboardInterrupt:
+        print_stats(total_size, status_codes)
+        raise
